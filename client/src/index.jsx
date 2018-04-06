@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import List from './components/List.jsx';
+import Selection from './components/Selection.jsx';
+import Search from './components/Search.jsx';
 import axios from 'axios';
 
 class App extends React.Component {
@@ -12,15 +13,17 @@ class App extends React.Component {
     this.search = this.search.bind(this);
   }
 
-  search(term) {
-    axios.post('/search', {term: term})
+  search(query) {
+    axios.post('/search', {term: query})
     .then(({data}) => {this.setState({result: data})})
+    console.log('search successful')
   }
 
   render() {
     return(
       <div>
-        <List result={this.state.result} search={this.search} />
+        <Search search={this.search} />
+        <Selection result={this.state.result} />
       </div>
     )
   }
