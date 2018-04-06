@@ -15,8 +15,11 @@ class App extends React.Component {
 
   search(query) {
     axios.post('/search', {term: query})
-    .then(({data}) => {this.setState({result: data})})
-    console.log('search successful')
+    .then(({data}) => { 
+      this.setState({result: data.businesses})})
+    .catch((err) => {
+      console.log(err);
+    })
   }
 
   render() {

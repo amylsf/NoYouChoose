@@ -40,14 +40,14 @@ let getSearchResults = (query, location, callback) => {
 }
 
 app.post('/search', function(req, res) {
-  getSearchResults('burrito', '10012', function(data) {
-    //console.log(JSON.stringify(data));
-    res.send(JSON.stringify(data));
+  getSearchResults(req.body.term, '10012', function(data) {
+    console.log(data)
+    res.status(201).send(JSON.stringify(data));
   })
 })
 
 app.get('/search', function(req, res) {
-
+  res.send();
 })
 
 module.exports.app = app;
