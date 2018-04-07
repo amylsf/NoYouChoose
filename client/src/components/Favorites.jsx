@@ -4,13 +4,14 @@ const Favorites = (props) => (
   <div>
     <button onClick={props.viewFavorites}>View Favorites</button>
     <div>
+    {console.log(props.favorites)}
     {props.favorites.map((item) => {
       return (
         <ul>
-          <li><a href={item.url}>{item.name}</a></li>
-          <li>{item.url}</li>
-          <li>{item.price}</li>
-          <li>{item.rating}</li>
+          <img src={item.image}></img>
+          <div><a href={item.url}>{item.name}</a></div>
+          <li>Rating: {item.rating}</li>
+          <li>Price: {item.price}</li>
         </ul>
       )
     })}

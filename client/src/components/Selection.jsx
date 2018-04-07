@@ -5,6 +5,8 @@ const Selection = (props) => (
     <h4> Here's where you're going: </h4>
     <div>
       <div>
+        <img src={props.result.image_url}></img>
+        <br/>
         <span><a href={props.result.url}>{props.result.name}</a></span>
         <br/>
         <span>Rating: {props.result.rating}</span>

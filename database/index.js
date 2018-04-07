@@ -7,7 +7,8 @@ let savedSchema = mongoose.Schema({
   category: String,
   url: String,
   rating: Number,
-  price: String
+  price: String,
+  image: String
 })
 
 let Favorite = mongoose.model('Favorite', savedSchema);
@@ -19,7 +20,8 @@ let save = (restaurant) => {
     category: restaurant.categories[0].alias,
     url: restaurant.url,
     rating: restaurant.rating,
-    price: restaurant.price
+    price: restaurant.price,
+    image: restaurant.image_url
   }).catch((err) => {
     console.log(err);
   });       
