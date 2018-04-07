@@ -25,7 +25,8 @@ let getSearchResults = (query, location, callback) => {
       location: location,
       radius: 1000,
       limit: 30,
-      open_now: true
+      open_now: true,
+      price: "1, 2, 3, 4"
     }
   }
   

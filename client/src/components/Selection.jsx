@@ -6,8 +6,10 @@ const Selection = (props) => (
     <div>
       <div>
         <span><a href={props.result.url}>{props.result.name}</a></span>
-        <span>{props.result.rating}</span>
-        <span>{props.result.price}</span>
+        <br/>
+        <span>Rating: {props.result.rating}</span>
+        <br/>
+        <span>Price: {props.result.price}</span>
       </div>
     </div>
     <button onClick={props.removeItem}>Choose something else!</button>
