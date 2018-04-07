@@ -21,7 +21,7 @@ class App extends React.Component {
     this.saveItem = this.saveItem.bind(this);
     this.viewFavorites = this.viewFavorites.bind(this);
     this.onChange = this.onChange.bind(this);
-    // this.clearForm = this.clearForm.bind(this);
+    this.clearForm = this.clearForm.bind(this);
   }
 
   search(query, location) {
@@ -32,7 +32,7 @@ class App extends React.Component {
     .catch((err) => {
       console.log(err);
     })
-    // this.clearForm();
+    this.clearForm();
   }
 
   removeItem() {
@@ -67,11 +67,12 @@ class App extends React.Component {
     })
   }
 
-  // clearForm() {
-  //   this.setState({
-  //    query: ''
-  //   });
-  // }
+  clearForm() {
+    this.setState({
+     query: '',
+     location: ''
+    });
+  }
 
   render() {
     return(

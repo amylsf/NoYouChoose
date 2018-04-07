@@ -1,7 +1,6 @@
 import React from 'react';
 
 const Search = (props) => {
-
   let search = function() {
     props.search(props.query, props.location);
   }
