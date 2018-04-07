@@ -13,23 +13,26 @@ class App extends React.Component {
     this.state = {
       result: [],
       favorites: [],
-      query: ''
+      query: '',
+      location: ''
     }
     this.search = this.search.bind(this);
     this.removeItem = this.removeItem.bind(this);
     this.saveItem = this.saveItem.bind(this);
     this.viewFavorites = this.viewFavorites.bind(this);
     this.onChange = this.onChange.bind(this);
+    // this.clearForm = this.clearForm.bind(this);
   }
 
   search(query, location) {
     axios.post('/search', {term: query, location: location || '369 Lexington Ave, New York, NY'})
     .then(({data}) => { 
       data.businesses = _.shuffle(data.businesses);
-      this.setState({result: data.businesses, query: query})})
+      this.setState({result: data.businesses})})
     .catch((err) => {
       console.log(err);
     })
+    // this.clearForm();
   }
 
   removeItem() {
@@ -60,21 +63,27 @@ class App extends React.Component {
 
   onChange(event) {
     this.setState({
-       query: event.target.value
+       [event.target.name]: event.target.value
     })
   }
+
+  // clearForm() {
+  //   this.setState({
+  //    query: ''
+  //   });
+  // }
 
   render() {
     return(
       <div>
         <div>
-          <Search query={this.state.query} search={this.search} changeHandler={this.onChange} />
+          <Search query={this.state.query} location={this.state.location} search={this.search} changeHandler={this.onChange}/>
         </div>
         <div>
           <Favorites favorites={this.state.favorites} viewFavorites={this.viewFavorites}/>
         </div>
         <div>
-          <Button search={this.search}/>
+          <Button search={this.search} location={this.state.location}/>
         </div>
         <div>
           {this.state.result.length === 0 ? null : <Selection result={this.state.result[0]} save = {this.saveItem} removeItem={this.removeItem} />}
