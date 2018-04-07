@@ -11,19 +11,22 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      result: []
+      result: [],
+      favorites: [],
+      query: ''
     }
     this.search = this.search.bind(this);
     this.removeItem = this.removeItem.bind(this);
     this.saveItem = this.saveItem.bind(this);
     this.viewFavorites = this.viewFavorites.bind(this);
+    this.onChange = this.onChange.bind(this);
   }
 
   search(query, location) {
     axios.post('/search', {term: query, location: location || '369 Lexington Ave, New York, NY'})
     .then(({data}) => { 
       data.businesses = _.shuffle(data.businesses);
-      this.setState({result: data.businesses})})
+      this.setState({result: data.businesses, query: query})})
     .catch((err) => {
       console.log(err);
     })
@@ -48,10 +51,16 @@ class App extends React.Component {
   viewFavorites() {
     axios.get('/save')
     .then(({data}) => {
-      console.log('Retrieved Saved Items.')
+      this.setState({favorites: data})
     })
     .catch((err) => {
       console.log(err);
+    })
+  }
+
+  onChange(event) {
+    this.setState({
+       query: event.target.value
     })
   }
 
@@ -59,8 +68,10 @@ class App extends React.Component {
     return(
       <div>
         <div>
-          <Search search={this.search} />
-          <button onClick={this.viewFavorites}>View Favorites</button>
+          <Search query={this.state.query} search={this.search} changeHandler={this.onChange} />
+        </div>
+        <div>
+          <Favorites favorites={this.state.favorites} viewFavorites={this.viewFavorites}/>
         </div>
         <div>
           <Button search={this.search}/>

@@ -4,7 +4,6 @@ class Search extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      query: '',
       location: ''
     }
     this.search = this.search.bind(this);
@@ -12,19 +11,19 @@ class Search extends React.Component {
   }
 
   search() {
-    this.props.search(this.state.query, this.state.location);
+    this.props.search(this.props.query, this.state.location);
   }
 
   onChange(event) {
-    this.setState({
-      [event.target.name]: event.target.value
-    })
+      this.setState({
+        location: event.target.value
+      })
   }
 
   render() {
     return (
       <div>
-      Enter a cuisine or food item (optional): <input name="query" value={this.state.query} onChange={this.onChange}/>
+      Enter a cuisine or food item (optional): <input name="query" value={this.props.query} onChange={this.props.changeHandler}/>
       <br/>
       Enter your location: <input name="location" value={this.state.location} onChange={this.onChange}/>
       <button onClick={this.search}>Nom Nom</button>
