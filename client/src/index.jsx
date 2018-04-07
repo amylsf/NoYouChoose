@@ -16,8 +16,9 @@ class App extends React.Component {
     this.removeItem = this.removeItem.bind(this);
   }
 
-  search(query) {
-    axios.post('/search', {term: query})
+  search(query, location) {
+    console.log(location)
+    axios.post('/search', {term: query, location: location || '369 Lexington Ave, New York, NY'})
     .then(({data}) => { 
       data.businesses = _.shuffle(data.businesses);
       this.setState({result: data.businesses})})

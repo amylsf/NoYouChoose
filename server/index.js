@@ -23,7 +23,7 @@ let getSearchResults = (query, location, callback) => {
     qs: {
       term: query,
       location: location,
-      radius: 1200,
+      radius: 1000,
       limit: 30,
       open_now: true
     }
@@ -39,7 +39,7 @@ let getSearchResults = (query, location, callback) => {
 }
 
 app.post('/search', function(req, res) {
-  getSearchResults(req.body.term, '369 Lexington Ave, New York', function(data) {
+  getSearchResults(req.body.term, req.body.location, function(data) {
     res.status(201).send(JSON.stringify(data));
   })
 })
