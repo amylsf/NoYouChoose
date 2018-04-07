@@ -53,7 +53,8 @@ app.post('/save', function(req, res) {
 })
 
 app.get('/save', function(req, res) {
-  res.send();
+  let favorite = db.Favorite.find({})
+  .then(data => res.send(data))
 })
 
 module.exports.app = app;

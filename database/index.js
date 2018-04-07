@@ -26,3 +26,4 @@ let save = (restaurant) => {
 }
 
 module.exports.save = save;
+module.exports.Favorite = Favorite;

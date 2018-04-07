@@ -4,6 +4,7 @@ import _ from 'underscore';
 import Selection from './components/Selection.jsx';
 import Search from './components/Search.jsx';
 import Button from './components/Button.jsx';
+import Favorites from './components/Favorites.jsx'
 import axios from 'axios';
 
 class App extends React.Component {
@@ -15,6 +16,7 @@ class App extends React.Component {
     this.search = this.search.bind(this);
     this.removeItem = this.removeItem.bind(this);
     this.saveItem = this.saveItem.bind(this);
+    this.viewFavorites = this.viewFavorites.bind(this);
   }
 
   search(query, location) {
@@ -43,11 +45,22 @@ class App extends React.Component {
     })
   }
 
+  viewFavorites() {
+    axios.get('/save')
+    .then(({data}) => {
+      console.log('Retrieved Saved Items.')
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+  }
+
   render() {
     return(
       <div>
         <div>
           <Search search={this.search} />
+          <button onClick={this.viewFavorites}>View Favorites</button>
         </div>
         <div>
           <Button search={this.search}/>
