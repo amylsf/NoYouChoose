@@ -11,6 +11,7 @@ class App extends React.Component {
       result: []
     }
     this.search = this.search.bind(this);
+    this.removeItem = this.removeItem.bind(this);
   }
 
   search(query) {
@@ -22,11 +23,21 @@ class App extends React.Component {
     })
   }
 
+  removeItem() {
+    this.setState({
+      result: this.state.result.slice(1)
+    })
+  }
+
   render() {
     return(
       <div>
-        <Search search={this.search} />
-        <Selection result={this.state.result} />
+        <div>
+          <Search search={this.search} />
+        </div>
+        <div>
+          {this.state.result.length === 0 ? null : <Selection result={this.state.result[0]} removeItem={this.removeItem} />}
+        </div>
       </div>
     )
   }
