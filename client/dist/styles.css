@@ -1,0 +1,50 @@
+.choose-button {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.choice-container {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.faveimg {
+  width: 30%;
+  height: 200px;
+}
+
+.mainimg { 
+  max-width: 600px;
+  max-height: 600px;
+}
+
+.btn-next {
+  margin-top: 20px;
+  margin-bottom: 50px;
+}
+
+.btn-save {
+  margin-top: 20px;
+  margin-bottom: 50px;
+}
+
+.btn-primary {
+  margin-top: 20px;
+  font-size: 2rem;
+}
+
+img {
+  border-radius: 5px;
+}
+
+.description {
+  font-size: 20px;
+}
+
+.words {
+  font-weight: bold;
+}
+
+.question {
+  font-size: 40px;
+}

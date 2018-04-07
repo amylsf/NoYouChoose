@@ -90,7 +90,7 @@ class App extends React.Component {
           <Search query={this.state.query} location={this.state.location} search={this.search} changeHandler={this.onChange}/>
         </div>
         <div>
-          <button onClick={this.viewFavorites}>View Favorites</button>
+          <button onClick={this.viewFavorites}>Show/Hide Favorites</button>
           <br/>
           {!this.state.isHidden && <Favorites favorites={this.state.favorites} toggleHidden={this.toggleHidden}/>}
         </div>

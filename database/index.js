@@ -17,7 +17,7 @@ let save = (restaurant) => {
   return  Favorite.create({
     id: restaurant.id,
     name: restaurant.name,
-    category: restaurant.categories[0].alias,
+    category: restaurant.categories[0].title,
     url: restaurant.url,
     rating: restaurant.rating,
     price: restaurant.price,

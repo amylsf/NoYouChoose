@@ -1,21 +1,25 @@
 import React from 'react';
 
 const Selection = (props) => (
-  <div>
+  <div class="choice-container">
     <h4> Here's where you're going: </h4>
     <div>
       <div>
-        <img src={props.result.image_url}></img>
+        <img class="mainimg" src={props.result.image_url}></img>
         <br/>
-        <span><a href={props.result.url}>{props.result.name}</a></span>
-        <br/>
-        <span>Rating: {props.result.rating}</span>
-        <br/>
-        <span>Price: {props.result.price}</span>
+        <div class="description">
+          <span><a href={props.result.url}><span class="words">{props.result.name}</span></a></span>
+          <br/>
+          <span><span class="words">{props.result.categories[0].title}</span></span>
+          <br/>
+          <span><span class="words">Rating:</span> {props.result.rating}</span>
+          <br/>
+          <span><span class="words">Price:</span> {props.result.price}</span>
+        </div>
       </div>
     </div>
-    <button onClick={() => {props.save(props.result)}}>Save to Favorites</button>
-    <button onClick={props.removeItem}>Choose something else!</button>
+    <button class="btn-save" onClick={() => {props.save(props.result)}}>Save to Favorites</button>
+    <button class="btn-next" onClick={props.removeItem}>Choose something else!</button>
   </div>
 )
 
