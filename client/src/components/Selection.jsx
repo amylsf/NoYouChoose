@@ -1,25 +1,25 @@
 import React from 'react';
 
 const Selection = (props) => (
-  <div class="choice-container">
-    <h4> Here's where you're going: </h4>
+  <div className="choice-container">
+    <h4 className="words"> Here's where you're going: </h4>
     <div>
       <div>
-        <img class="mainimg" src={props.result.image_url}></img>
+        <img className="mainimg" src={props.result.image_url}></img>
         <br/>
-        <div class="description">
-          <span><a href={props.result.url}><span class="words">{props.result.name}</span></a></span>
+        <div className="description">
+          <span><a href={props.result.url}><span className="words">{props.result.name}</span></a></span>
           <br/>
-          <span><span class="words">{props.result.categories[0].title}</span></span>
+          <span><span className="words">{props.result.categories[0].title}</span></span>
           <br/>
-          <span><span class="words">Rating:</span> {props.result.rating}</span>
+          <span><span className="words">Rating:</span> {props.result.rating}</span>
           <br/>
-          <span><span class="words">Price:</span> {props.result.price}</span>
+          <span><span className="words">Price:</span> {props.result.price}</span>
         </div>
       </div>
     </div>
-    <button class="btn-save" onClick={() => {props.save(props.result)}}>Save to Favorites</button>
-    <button class="btn-next" onClick={props.removeItem}>Choose something else!</button>
+    <button className="btn-save btn btn-light" onClick={() => {props.save(props.result)}}>Save to Favorites</button>
+    <button className="btn-next btn btn-light" onClick={props.removeItem}>Choose something else!</button>
   </div>
 )
 

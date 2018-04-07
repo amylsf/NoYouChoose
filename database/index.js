@@ -1,5 +1,5 @@
 let mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/noyouchoose');
+mongoose.connect('mongodb://user:12345@ds235239.mlab.com:35239/sfdb');
 
 let savedSchema = mongoose.Schema({
   id: {type: String, unique: true},

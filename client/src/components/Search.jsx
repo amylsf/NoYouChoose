@@ -6,11 +6,11 @@ const Search = (props) => {
   }
 
   return (
-    <div>
-    Enter a cuisine or food item (optional): <input name="query" value={props.query} onChange={props.changeHandler}/>
-    <br/>
+    <div className="first-words">
     Enter your location: <input name="location" value={props.location} onChange={props.changeHandler}/>
-    <button onClick={search}>Nom Nom</button>
+    <br/>
+    Enter a cuisine or food item (optional): <input name="query" value={props.query} onChange={props.changeHandler}/>
+    <button className="btn btn-light" onClick={search}>Nom Nom</button>
     </div>
   )
 }

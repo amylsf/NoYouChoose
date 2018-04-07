@@ -2,11 +2,11 @@ import React from 'react';
 
 const Favorites = (props) => (
   <div>
-    <div class="favorites">
+    <div className="favorites">
     {props.favorites.map((item) => {
       return (
-        <div>
-          <img class="faveimg" src={item.image}></img>
+        <div className="favorite">
+          <img className="faveimg" src={item.image}></img>
           <div><a href={item.url}>{item.name}</a></div>
           <div>{item.category}</div>
           <div>Rating: {item.rating}</div>

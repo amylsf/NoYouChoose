@@ -90,15 +90,15 @@ class App extends React.Component {
           <Search query={this.state.query} location={this.state.location} search={this.search} changeHandler={this.onChange}/>
         </div>
         <div>
-          <button onClick={this.viewFavorites}>Show/Hide Favorites</button>
+          <button className="faves-btn btn btn-light" onClick={this.viewFavorites}>Show/Hide Favorites</button>
           <br/>
           {!this.state.isHidden && <Favorites favorites={this.state.favorites} toggleHidden={this.toggleHidden}/>}
         </div>
         <div>
-          <Button search={this.search} location={this.state.location}/>
+          {!this.state.isHidden ? null : <Button search={this.search} location={this.state.location}/>}
         </div>
         <div>
-          {this.state.result.length === 0 ? null : <Selection result={this.state.result[0]} save = {this.saveItem} removeItem={this.removeItem} />}
+          {this.state.result.length === 0 || !this.state.isHidden ? null : <Selection result={this.state.result[0]} save = {this.saveItem} removeItem={this.removeItem} />}
         </div>
       </div>
     )

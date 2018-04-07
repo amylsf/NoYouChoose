@@ -8,6 +8,13 @@
   margin-top: 40px;
 }
 
+.header {
+  margin-top: 20px;
+  margin-left: 40px;
+  margin-bottom: 10px;
+  font-family: 'Roboto', sans-serif;
+}
+
 .faveimg {
   width: 30%;
   height: 200px;
@@ -23,6 +30,11 @@
   margin-bottom: 50px;
 }
 
+.faves-btn {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
 .btn-save {
   margin-top: 20px;
   margin-bottom: 50px;
@@ -31,6 +43,7 @@
 .btn-primary {
   margin-top: 20px;
   font-size: 2rem;
+  font-family: 'Roboto', sans-serif;
 }
 
 img {
@@ -43,8 +56,26 @@ img {
 
 .words {
   font-weight: bold;
+  font-family: 'Roboto', sans-serif;
 }
 
 .question {
   font-size: 40px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.first-words {
+  font-family: 'Roboto', sans-serif;
+}
+
+input {
+  margin-top: 10px;
+}
+
+.btn-light {
+  font-size: 15px;
+}
+
+.favorite {
+  margin-bottom: 20px;
 }
