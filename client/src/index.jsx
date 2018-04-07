@@ -14,7 +14,8 @@ class App extends React.Component {
       result: [],
       favorites: [],
       query: '',
-      location: ''
+      location: '',
+      isHidden: true
     }
     this.search = this.search.bind(this);
     this.removeItem = this.removeItem.bind(this);
@@ -22,6 +23,7 @@ class App extends React.Component {
     this.viewFavorites = this.viewFavorites.bind(this);
     this.onChange = this.onChange.bind(this);
     this.clearForm = this.clearForm.bind(this);
+    this.toggleHidden = this.toggleHidden.bind(this);
   }
 
   search(query, location) {
@@ -59,6 +61,7 @@ class App extends React.Component {
     .catch((err) => {
       console.log(err);
     })
+    this.toggleHidden();
   }
 
   onChange(event) {
@@ -74,6 +77,12 @@ class App extends React.Component {
     });
   }
 
+  toggleHidden() {
+    this.setState({
+      isHidden: !this.state.isHidden
+    })
+  }
+
   render() {
     return(
       <div>
@@ -81,7 +90,9 @@ class App extends React.Component {
           <Search query={this.state.query} location={this.state.location} search={this.search} changeHandler={this.onChange}/>
         </div>
         <div>
-          <Favorites favorites={this.state.favorites} viewFavorites={this.viewFavorites}/>
+          <button onClick={this.viewFavorites}>View Favorites</button>
+          <br/>
+          {!this.state.isHidden && <Favorites favorites={this.state.favorites} toggleHidden={this.toggleHidden}/>}
         </div>
         <div>
           <Button search={this.search} location={this.state.location}/>
