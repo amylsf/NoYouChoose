@@ -12,6 +12,7 @@ const Selection = (props) => (
         <span>Price: {props.result.price}</span>
       </div>
     </div>
+    <button onClick={() => {props.save(props.result)}}>Save to Favorites</button>
     <button onClick={props.removeItem}>Choose something else!</button>
   </div>
 )

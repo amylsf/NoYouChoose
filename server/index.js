@@ -2,6 +2,7 @@ let express = require('express');
 let parser = require('body-parser');
 let request = require('request');
 let token = require('../config.js').API_TOKEN;
+let db = require('../database');
 
 let app = express();
 let port = 3000;
@@ -24,7 +25,7 @@ let getSearchResults = (query, location, callback) => {
       term: query,
       location: location,
       radius: 1000,
-      limit: 30,
+      limit: 20,
       open_now: true,
       price: "1, 2, 3, 4"
     }
@@ -45,7 +46,13 @@ app.post('/search', function(req, res) {
   })
 })
 
-app.get('/search', function(req, res) {
+app.post('/save', function(req, res) {
+  db.save(req.body.item).then(() => {
+    res.status(201).send('Saved!');
+  })
+})
+
+app.get('/save', function(req, res) {
   res.send();
 })
 

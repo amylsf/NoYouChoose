@@ -1,20 +1,28 @@
 let mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/noyouchoose');
 
-let savedSchema = mongoose.schema({
+let savedSchema = mongoose.Schema({
   id: {type: String, unique: true},
   name: String,
-  type: String,
-  location: String,
+  category: String,
   url: String,
   rating: Number,
   price: String
-  //timestamp
 })
 
-let Saved = mongoose.model('Saved', savedSchema);
+let Favorite = mongoose.model('Favorite', savedSchema);
 
-let save = (restaurants) => {
-  return Saved.create(restaurants).catch((err) => {});
-               
+let save = (restaurant) => {
+  return  Favorite.create({
+    id: restaurant.id,
+    name: restaurant.name,
+    category: restaurant.categories[0].alias,
+    url: restaurant.url,
+    rating: restaurant.rating,
+    price: restaurant.price
+  }).catch((err) => {
+    console.log(err);
+  });       
 }
+
+module.exports.save = save;

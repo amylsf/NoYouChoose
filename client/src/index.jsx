@@ -14,10 +14,10 @@ class App extends React.Component {
     }
     this.search = this.search.bind(this);
     this.removeItem = this.removeItem.bind(this);
+    this.saveItem = this.saveItem.bind(this);
   }
 
   search(query, location) {
-    console.log(location)
     axios.post('/search', {term: query, location: location || '369 Lexington Ave, New York, NY'})
     .then(({data}) => { 
       data.businesses = _.shuffle(data.businesses);
@@ -33,6 +33,16 @@ class App extends React.Component {
     })
   }
 
+  saveItem(item) {
+    axios.post('/save', {item: item})
+    .then(({data}) => {
+      console.log('Item saved successfully.')
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+  }
+
   render() {
     return(
       <div>
@@ -43,7 +53,7 @@ class App extends React.Component {
           <Button search={this.search}/>
         </div>
         <div>
-          {this.state.result.length === 0 ? null : <Selection result={this.state.result[0]} removeItem={this.removeItem} />}
+          {this.state.result.length === 0 ? null : <Selection result={this.state.result[0]} save = {this.saveItem} removeItem={this.removeItem} />}
         </div>
       </div>
     )
